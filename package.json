@@ -6,8 +6,10 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "node index.js",
-		"docker-build": "docker build .",
+		"docker-build": "docker build -t node-sample-image .",
 		"docker-run": "docker run -p 3000:3000 -d --name node-app node-sample-image",
+		"docker-bash": "docker exec -it node-app bash",
+		"docker-kill": "docker rm node-app -f",
 		"test": "test"
 	},
 	"repository": {
