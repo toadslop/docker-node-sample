@@ -12,9 +12,10 @@
 		"docker-bash": "docker exec -it node-app bash",
 		"docker-kill": "docker rm node-app -f",
 		"dev-up": "docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build",
-		"dev-down": "docker compose -f docker-compose.yml -f docker-compose.dev.yml down -v",
+		"dev-down": "docker compose -f docker-compose.yml -f docker-compose.dev.yml down",
 		"prod-up": "docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build",
-		"prod-down": "docker compose -f docker-compose.yml -f docker-compose.prod.yml down -v",
+		"prod-down": "docker compose -f docker-compose.yml -f docker-compose.prod.yml down",
+		"prod-bash": "docker exec -it docker-node-sample_node-app_1 bash",
 		"test": "test"
 	},
 	"repository": {
