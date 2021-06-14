@@ -10,4 +10,15 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_IP=${DB_IP}
+      - DB_PORT=${DB_PORT}
     command: yarn dev
+  mongo:
+    image: mongo:5.0.0-rc1
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${DB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASS}
+    volumes:
+      - mongo-db:/data/db
