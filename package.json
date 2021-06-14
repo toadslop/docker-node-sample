@@ -16,13 +16,18 @@
 		"prod-up": "docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build",
 		"prod-down": "docker compose -f docker-compose.yml -f docker-compose.prod.yml down",
 		"prod-bash": "docker exec -it docker-node-sample_node-app_1 bash",
+		"logs": "docker logs docker-node-sample_node-app_1",
 		"test": "test"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/toadslop/docker-node-sample.git"
 	},
-	"keywords": ["node", "docker", "express"],
+	"keywords": [
+		"node",
+		"docker",
+		"express"
+	],
 	"author": "Toadslop",
 	"license": "ISC",
 	"bugs": {
@@ -30,7 +35,8 @@
 	},
 	"homepage": "https://github.com/toadslop/docker-node-sample#readme",
 	"dependencies": {
-		"express": "^4.17.1"
+		"express": "^4.17.1",
+		"mongoose": "^5.12.13"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.7"
