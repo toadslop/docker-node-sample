@@ -12,5 +12,5 @@ const postSchema = new Schema({
   },
 });
 const Post = model("Post", postSchema);
-console.log("POST FIND", Post.find);
+
 export default Post;

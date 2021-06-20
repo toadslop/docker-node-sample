@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
-import router from "./routes/post.js";
+import postRouter from "./routes/post.js";
+import userRouter from "./routes/user.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -36,6 +37,7 @@ app.get("/", (req, res) => {
   res.send("<h2>I love hamburgers!!!.</h2>");
 });
 
-app.use("/api/v1/posts", router);
+app.use("/api/v1/posts", postRouter);
+app.use("/api/v1/users", userRouter);
 
 app.listen(PORT, () => console.info(`listening on port ${PORT}`));
