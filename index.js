@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import router from "./routes/post.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -29,8 +30,12 @@ if (!DB_USER) {
   }
 })();
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
-  res.send("<h2>Hi There</h2>");
+  res.send("<h2>I love hamburgers!!!.</h2>");
 });
+
+app.use("/api/v1/posts", router);
 
 app.listen(PORT, () => console.info(`listening on port ${PORT}`));
