@@ -6,6 +6,7 @@ const signUp = async (req, res) => {
   try {
     const hashpassword = await bcrypt.hash(userpass, 12);
     const newUser = await User.create({ username, userpass: hashpassword });
+    req.session.user = newUser;
     res.status(201).json({
       status: "sucess",
       data: {
@@ -31,9 +32,11 @@ const login = async (req, res) => {
         message: "user not found",
       });
     }
-    const isCorrect = bcrypt.compare(userpass, currentUser.password);
+
+    const isCorrect = bcrypt.compare(userpass, currentUser.userpass);
 
     if (isCorrect) {
+      req.session.user = currentUser;
       res.status(200).json({
         status: "success",
       });
