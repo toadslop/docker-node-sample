@@ -5,6 +5,7 @@ import userRouter from "./routes/user.js";
 import session from "express-session";
 import redis from "redis";
 import RedisStore from "connect-redis";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +19,7 @@ let redisClient = redis.createClient({
   host: process.env.REDIS_URL || "redis",
   port: process.env.REDIS_PORT || 6379,
 });
+mongoose.set("useCreateIndex", true);
 
 if (!DB_PASS) {
   console.error("No value for DB_PASS found in .env file");
@@ -39,10 +41,15 @@ if (!DB_USER) {
   }
 })();
 
+app.enable("trust proxy");
+app.use(cors({}));
+
 app.use(
   session({
     store: new store({ client: redisClient }),
     secret: process.env.SESSION_SECRET || "asdfghjkl",
+    resave: false,
+    saveUninitialized: true,
     cookie: {
       secure: false,
       resave: false,
@@ -54,8 +61,9 @@ app.use(
 );
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("<h2>I love hamburgers!!!.</h2>");
+  console.log("lalal");
 });
 
 app.use("/api/v1/posts", postRouter);
