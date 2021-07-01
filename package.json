@@ -11,9 +11,9 @@
     "docker-run": "docker run -v $(pwd):/app:ro -v /app/node_modules --env-file ./.env -p 3000:3000 -d --name node-app node-sample-image",
     "docker-bash": "docker exec -it docker-node-sample_node-app_1 bash",
     "docker-kill": "docker rm node-app -f",
-    "dev-up": "docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build -V",
+    "dev-up": "docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build -V --scale node-app=2",
     "dev-down": "docker compose -f docker-compose.yml -f docker-compose.dev.yml down",
-    "prod-up": "docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build",
+    "prod-up": "docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build -V --scale node-app=2",
     "prod-down": "docker compose -f docker-compose.yml -f docker-compose.prod.yml down",
     "prod-bash": "docker exec -it docker-node-sample_node-app_1 bash",
     "logs": "docker logs docker-node-sample_node-app_1",
@@ -23,7 +23,11 @@
     "type": "git",
     "url": "git+https://github.com/toadslop/docker-node-sample.git"
   },
-  "keywords": ["node", "docker", "express"],
+  "keywords": [
+    "node",
+    "docker",
+    "express"
+  ],
   "author": "Toadslop",
   "license": "ISC",
   "bugs": {
@@ -33,6 +37,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-redis": "^6.0.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "mongoose": "^5.12.13",
