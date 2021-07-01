@@ -1,6 +1,6 @@
 import { Router } from "express";
 import posts from "../controllers/post.js";
-import { protect } from "../middleware/authMiddleware";
+import { protect } from "../middleware/authMiddleware.js";
 
 const postRouter = Router();
 
