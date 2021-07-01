@@ -17,17 +17,14 @@
     "prod-down": "docker compose -f docker-compose.yml -f docker-compose.prod.yml down",
     "prod-bash": "docker exec -it docker-node-sample_node-app_1 bash",
     "logs": "docker logs docker-node-sample_node-app_1",
-    "test": "test"
+    "test": "test",
+    "prod-login": "ssh -i aws.pem root@54.176.145.129"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/toadslop/docker-node-sample.git"
   },
-  "keywords": [
-    "node",
-    "docker",
-    "express"
-  ],
+  "keywords": ["node", "docker", "express"],
   "author": "Toadslop",
   "license": "ISC",
   "bugs": {
