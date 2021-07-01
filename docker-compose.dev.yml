@@ -20,7 +20,6 @@ services:
       - SESSION_SECRET=${SESSION_SECRET}
     command: yarn dev
   mongo:
-    image: mongo:5.0.0-rc1
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${DB_USER}
       - MONGO_INITDB_ROOT_PASSWORD=${DB_PASS}
