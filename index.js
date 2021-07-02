@@ -15,11 +15,12 @@ const DB_USER = process.env.DB_USER;
 const DB_IP = process.env.DB_IP || "mongo";
 const mongoUrl = `mongodb://${DB_USER}:${DB_PASS}@${DB_IP}:${DB_PORT}/?authSource=admin`;
 
-let store = RedisStore(session);
-let redisClient = redis.createClient({
+const store = RedisStore(session);
+const redisClient = redis.createClient({
   host: process.env.REDIS_URL || "redis",
   port: process.env.REDIS_PORT || 6379,
 });
+// eslint-disable-next-line functional/no-expression-statement
 mongoose.set("useCreateIndex", true);
 
 if (!DB_PASS) {
