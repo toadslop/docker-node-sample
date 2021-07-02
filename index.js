@@ -31,8 +31,8 @@ if (!DB_USER) {
 }
 
 (async () => {
+  console.log(mongoUrl);
   try {
-    console.log(mongoUrl);
     await mongoose.connect(mongoUrl, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
