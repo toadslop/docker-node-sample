@@ -1,11 +1,11 @@
 ### GET WHATEVER
-GET http://54.151.101.49:80/api
+GET http://3.101.88.163/api
 
 ### GET POSTS
-GET http://localhost:3000/api/v1/posts
+GET http://3.101.88.163/api/v1/posts
 
 ### CREATE A POST
-POST http://localhost:3000/api/v1/posts
+POST http://3.101.88.163/api/v1/posts
 content-type: application/json
 
 {
@@ -14,7 +14,7 @@ content-type: application/json
 }
 
 ### UPDATE A POST
-PATCH http://localhost:3000/api/v1/posts/60cdbeb8c08bbe015fdda325
+PATCH http://3.101.88.163/api/v1/posts/60cdbeb8c08bbe015fdda325
 content-type: application/json
 
 {
@@ -23,9 +23,9 @@ content-type: application/json
 }
 
 ### GET A POST
-GET http://localhost:3000/api/v1/posts/60cdbeb8c08bbe015fdda325
+GET http://3.101.88.163/api/v1/posts/60cdbeb8c08bbe015fdda325
 content-type: application/json
 
 ### DELETE A POST
-DELETE http://localhost:3000/api/v1/posts/60cdbeb8c08bbe015fdda325
+DELETE http://3.101.88.163/api/v1/posts/60cdbeb8c08bbe015fdda325
 content-type: application/json

@@ -1,5 +1,5 @@
 ### CREATE A USER
-POST http://54.151.101.49/api/v1/users/signup
+POST http://3.101.88.163/api/v1/users/signup
 content-type: application/json
 
 {
@@ -8,7 +8,7 @@ content-type: application/json
 }
 
 ### LOGIN
-POST http://localhost:3000/api/v1/users/login
+POST http://3.101.88.163/api/v1/users/login
 content-type: application/json
 
 {
