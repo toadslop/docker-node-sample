@@ -38,38 +38,38 @@ if (!DB_USER) {
       useNewUrlParser: true,
     });
     console.info("Logged into mongoDb");
+
+    app.enable("trust proxy");
+    app.use(cors({}));
+
+    app.use(
+      session({
+        store: new store({ client: redisClient }),
+        secret: process.env.SESSION_SECRET || "asdfghjkl",
+        resave: false,
+        saveUninitialized: true,
+        cookie: {
+          secure: false,
+          resave: false,
+          saveUninitialized: false,
+          httpOnly: true,
+          maxAge: 300000,
+        },
+      })
+    );
+    app.use(express.json());
+
+    app.get("/api", (req, res) => {
+      res.send("<h2>I love hamburgers!!!.</h2>");
+      console.log("lalal");
+    });
+
+    app.use("/api/v1/posts", postRouter);
+    app.use("/api/v1/users", userRouter);
+
+    app.listen(PORT, () => console.info(`listening on port ${PORT}`));
   } catch (error) {
     console.log("UUURRL!", mongoUrl);
     console.error(error);
   }
 })();
-
-app.enable("trust proxy");
-app.use(cors({}));
-
-app.use(
-  session({
-    store: new store({ client: redisClient }),
-    secret: process.env.SESSION_SECRET || "asdfghjkl",
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      secure: false,
-      resave: false,
-      saveUninitialized: false,
-      httpOnly: true,
-      maxAge: 300000,
-    },
-  })
-);
-app.use(express.json());
-
-app.get("/api", (req, res) => {
-  res.send("<h2>I love hamburgers!!!.</h2>");
-  console.log("lalal");
-});
-
-app.use("/api/v1/posts", postRouter);
-app.use("/api/v1/users", userRouter);
-
-app.listen(PORT, () => console.info(`listening on port ${PORT}`));
