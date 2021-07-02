@@ -1,0 +1,31 @@
+### GET WHATEVER
+GET http://54.176.145.129:80/api
+
+### GET POSTS
+GET http://localhost:3000/api/v1/posts
+
+### CREATE A POST
+POST http://localhost:3000/api/v1/posts
+content-type: application/json
+
+{
+    "title": "The Post1234",
+    "body": "This is a post."
+}
+
+### UPDATE A POST
+PATCH http://localhost:3000/api/v1/posts/60cdbeb8c08bbe015fdda325
+content-type: application/json
+
+{
+    "title": "The Post UPDATED AGAIN",
+    "body": "This is a post."
+}
+
+### GET A POST
+GET http://localhost:3000/api/v1/posts/60cdbeb8c08bbe015fdda325
+content-type: application/json
+
+### DELETE A POST
+DELETE http://localhost:3000/api/v1/posts/60cdbeb8c08bbe015fdda325
+content-type: application/json

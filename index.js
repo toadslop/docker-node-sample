@@ -14,6 +14,7 @@ const DB_PASS = process.env.DB_PASS;
 const DB_USER = process.env.DB_USER;
 const DB_IP = process.env.DB_IP || "mongo";
 const mongoUrl = `mongodb://${DB_USER}:${DB_PASS}@${DB_IP}:${DB_PORT}/?authSource=admin`;
+console.log(DB_USER, DB_PASS);
 let store = RedisStore(session);
 let redisClient = redis.createClient({
   host: process.env.REDIS_URL || "redis",
@@ -31,7 +32,7 @@ if (!DB_USER) {
 
 (async () => {
   try {
-    const mongoDb = await mongoose.connect(mongoUrl, {
+    await mongoose.connect(mongoUrl, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
     });
