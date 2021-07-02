@@ -18,7 +18,7 @@
     "prod-bash": "docker exec -it docker-node-sample_node-app_1 bash",
     "logs": "docker logs docker-node-sample_node-app_1",
     "test": "test",
-    "prod-login": "ssh -i aws.pem ubuntu@54.176.145.129"
+    "prod-login": "ssh -i aws.pem ubuntu@54.151.101.49"
   },
   "repository": {
     "type": "git",

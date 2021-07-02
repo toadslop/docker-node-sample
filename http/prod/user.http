@@ -1,5 +1,5 @@
 ### CREATE A USER
-POST http://54.176.145.129:80/api/v1/users/signup
+POST http://54.151.101.49:80/api/v1/users/signup
 content-type: application/json
 
 {
