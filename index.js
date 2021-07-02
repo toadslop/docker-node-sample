@@ -39,6 +39,7 @@ if (!DB_USER) {
     });
     console.info("Logged into mongoDb");
   } catch (error) {
+    console.log("UUURRL!", mongoUrl);
     console.error(error);
   }
 })();
