@@ -1,5 +1,5 @@
 ### GET WHATEVER
-GET http://54.176.145.129:80/api
+GET http://54.151.101.49:80/api
 
 ### GET POSTS
 GET http://localhost:3000/api/v1/posts
