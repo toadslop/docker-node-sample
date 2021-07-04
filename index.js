@@ -6,13 +6,10 @@ import session from "express-session";
 import redis from "redis";
 import RedisStore from "connect-redis";
 import cors from "cors";
+import { PORT, DB_IP, DB_PASS, DB_PORT, DB_USER } from "./config/env.js";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-const DB_PORT = process.env.DB_PORT || 27017;
-const DB_PASS = process.env.DB_PASS;
-const DB_USER = process.env.DB_USER;
-const DB_IP = process.env.DB_IP || "mongo";
+
 const mongoUrl = `mongodb://${DB_USER}:${DB_PASS}@${DB_IP}:${DB_PORT}/?authSource=admin`;
 
 const store = RedisStore(session);
@@ -22,14 +19,6 @@ const redisClient = redis.createClient({
 });
 // eslint-disable-next-line functional/no-expression-statement
 mongoose.set("useCreateIndex", true);
-
-if (!DB_PASS) {
-  console.error("No value for DB_PASS found in .env file");
-}
-
-if (!DB_USER) {
-  console.error("No value for DB_USER found in .env file");
-}
 
 (async () => {
   try {
