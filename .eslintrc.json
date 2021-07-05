@@ -14,5 +14,14 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "rules": {}
+  "rules": {
+    "functional/functional-parameters": [
+      "error",
+      {
+        "allowRestParameter": false,
+        "allowArgumentsKeyword": false,
+        "enforceParameterCount": false
+      }
+    ]
+  }
 }
