@@ -9,8 +9,8 @@ POST http://3.101.88.163/api/v1/posts
 content-type: application/json
 
 {
-    "title": "The Post1234",
-    "body": "This is a post."
+    "title": "SUP",
+    "body": "The sup post."
 }
 
 ### UPDATE A POST
@@ -23,7 +23,7 @@ content-type: application/json
 }
 
 ### GET A POST
-GET http://3.101.88.163/api/v1/posts/60cdbeb8c08bbe015fdda325
+GET http://3.101.88.163/api/v1/posts/60e2f0722537a9c0bfd4f6ad
 content-type: application/json
 
 ### DELETE A POST
