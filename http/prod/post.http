@@ -1,5 +1,5 @@
 ### GET WHATEVER
-GET http://3.101.88.163/api
+GET http://3.101.121.104/api
 
 ### GET POSTS
 GET http://3.101.88.163/api/v1/posts
