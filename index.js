@@ -16,7 +16,7 @@ app.use(cors({}));
 app.use(redisSessions);
 app.use(express.json());
 
-app.get("/api", (req, res) => res.send("<h2>I love pizza!!!.</h2>"));
+app.get("/api", (req, res) => res.send("<h2>I love natto!!!.</h2>"));
 
 app.use("/api/v1/posts", postRouter);
 app.use("/api/v1/users", userRouter);
