@@ -1,90 +1,53 @@
 import Post from "../models/Post.js";
+import {
+  find,
+  findById,
+  tryCrud,
+  createEntity,
+  findByIdAndUpdate,
+  findByIdAndDelete
+} from "./controllerUtils/index.js";
 
-const index = async (req, res, next) => {
-  try {
-    const posts = await Post.find();
-    res.status(200).json({
-      status: "success",
-      results: posts.length,
-      data: {
-        posts,
-      },
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(400).json({
-      status: "fail",
-    });
-  }
+const findPosts = find(Post);
+const findPostById = findById(Post);
+const createPost = createEntity(Post);
+const updatePost = findByIdAndUpdate(Post);
+const removePost = findByIdAndDelete(Post);
+
+const tryFindPosts = tryCrud(findPosts);
+const tryFindPostsById = tryCrud(findPostById);
+const tryCreatePost = tryCrud(createPost);
+const tryUpdatePost = tryCrud(updatePost);
+const tryAndRemovePost = tryCrud(removePost);
+
+const index = async (req, res) => {
+  const result = await tryFindPosts();
+  // eslint-disable-next-line functional/no-expression-statement
+  res.status(result.code).json(result);
 };
 
-const show = async (req, res, next) => {
-  try {
-    const post = await Post.findById(req.params.id);
-    res.status(200).json({
-      status: "success",
-      data: {
-        post,
-      },
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(400).json({
-      status: "fail",
-    });
-  }
+const show = async (req, res) => {
+  const result = await tryFindPostsById(req.params.id);
+  // eslint-disable-next-line functional/no-expression-statement
+  res.status(result.code).json(result);
 };
 
-const create = async (req, res, next) => {
-  try {
-    const post = await Post.create(req.body);
-    res.status(200).json({
-      status: "success",
-      data: {
-        post,
-      },
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(400).json({
-      status: "fail",
-    });
-  }
+const create = async (req, res) => {
+  const result = await tryCreatePost(req.body);
+  // eslint-disable-next-line functional/no-expression-statement
+  res.status(result.code).json(result);
 };
 
-const update = async (req, res, next) => {
-  try {
-    const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-
-    res.status(200).json({
-      status: "success",
-      data: {
-        post,
-      },
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(400).json({
-      status: "fail",
-    });
-  }
+const update = async (req, res) => {
+  const result = await tryUpdatePost(req.params.id, req.body);
+  // eslint-disable-next-line functional/no-expression-statement
+  res.status(result.code).json(result);
 };
 
-const remove = async (req, res, next) => {
-  try {
-    await Post.findByIdAndDelete(req.params.id);
-    res.status(200).json({
-      status: "success",
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(400).json({
-      status: "fail",
-    });
-  }
+const remove = async (req, res) => {
+  const result = await tryAndRemovePost(req.params.id);
+  // eslint-disable-next-line functional/no-expression-statement
+  res.status(result.code).json(result);
 };
 
 const posts = { index, show, create, remove, update };
