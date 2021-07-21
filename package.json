@@ -11,7 +11,7 @@
     "docker-run": "docker run -v $(pwd):/app:ro -v /app/node_modules --env-file ./.env -p 3000:3000 -d --name node-app node-sample-image",
     "docker-bash": "docker exec -it docker-node-sample_node-app_1 bash",
     "docker-kill": "docker rm node-app -f",
-    "dev-up": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build -V --scale",
+    "dev-up": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build -V",
     "dev-down": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml down",
     "prod-up": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build -V --scale node-app=2",
     "prod-down": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml down",
