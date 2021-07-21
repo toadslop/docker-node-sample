@@ -1,6 +1,6 @@
 import { pipe, otherwise, andThen } from "ramda";
 
-const statusMessages = { 200: "success", 400: "fail" };
+const statusMessages = { 200: "success", 201: "Create success", 400: "fail" };
 
 const genRespObjWithMessages = (messages) => (code) => (data) => {
   return {
