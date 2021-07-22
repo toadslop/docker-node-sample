@@ -22,32 +22,27 @@ const tryAndRemovePost = tryCrud(removePost);
 
 const index = async (req, res) => {
   const result = await tryFindPosts();
-  // eslint-disable-next-line functional/no-expression-statement
-  res.status(result.code).json(result);
+  return res.status(result.code).json(result);
 };
 
 const show = async (req, res) => {
   const result = await tryFindPostsById(req.params.id);
-  // eslint-disable-next-line functional/no-expression-statement
-  res.status(result.code).json(result);
+  return res.status(result.code).json(result);
 };
 
 const create = async (req, res) => {
   const result = await tryCreatePost(req.body);
-  // eslint-disable-next-line functional/no-expression-statement
-  res.status(result.code).json(result);
+  return res.status(result.code).json(result);
 };
 
 const update = async (req, res) => {
   const result = await tryUpdatePost(req.params.id, req.body);
-  // eslint-disable-next-line functional/no-expression-statement
-  res.status(result.code).json(result);
+  return res.status(result.code).json(result);
 };
 
 const remove = async (req, res) => {
   const result = await tryAndRemovePost(req.params.id);
-  // eslint-disable-next-line functional/no-expression-statement
-  res.status(result.code).json(result);
+  return res.status(result.code).json(result);
 };
 
 const posts = { index, show, create, remove, update };
