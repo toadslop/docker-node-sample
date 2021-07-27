@@ -1,24 +1,21 @@
 import { pipe, otherwise, andThen } from "ramda";
-
-const statusMessages = { 200: "success", 201: "Create success", 400: "fail" };
-
-const genRespObjWithMessages = (messages) => (code) => (data) => {
-  return {
-    code,
-    status: messages[code],
-    data,
-    count: data.length
-  };
-};
-
-const genResponseObject = genRespObjWithMessages(statusMessages);
-
-const OK = genResponseObject(200);
-const FAIL = genResponseObject(400);
+import { OK, CREATED, FAIL } from "./responses.js";
 
 const find = (Model) => async () => {
   const results = await Model.find();
   return OK(results);
+};
+
+const after = (crudFunc) => (afterFunc) => {
+  return (data) => {
+    const result = crudFunc(data);
+    return afterFunc(result);
+  };
+};
+
+const findOne = (Model) => async (data) => {
+  const result = await Model.findOne(data);
+  return OK(result);
 };
 
 const findById = (Model) => async (id) => {
@@ -28,7 +25,7 @@ const findById = (Model) => async (id) => {
 
 const createEntity = (Model) => async (body) => {
   const results = await Model.create(body);
-  return OK(results);
+  return CREATED(results);
 };
 
 const findByIdAndUpdate = (Model) => async (id, body) => {
@@ -53,11 +50,13 @@ const tryCrud = (crudFunc) =>
 
 export {
   find,
+  findOne,
   findById,
   error,
   returnResObj,
   tryCrud,
   createEntity,
   findByIdAndUpdate,
-  findByIdAndDelete
+  findByIdAndDelete,
+  after
 };
