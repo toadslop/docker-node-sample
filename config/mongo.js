@@ -8,15 +8,15 @@ const mongoUrl = `mongodb://${DB_USER}:${DB_PASS}@${DB_IP}:${DB_PORT}/?authSourc
 mongoose.set("useCreateIndex", true);
 const mongoOptions = {
   useUnifiedTopology: true,
-  useNewUrlParser: true,
+  useNewUrlParser: true
 };
 
-const mongoConnectSuccess = mongo => () => {
+const mongoConnectSuccess = (mongo) => () => {
   mongo.connect(mongoUrl, mongoOptions);
   console.info("Logged into MongoDb");
 };
 
-const mongoConnectError = error => console.error(error);
+const mongoConnectError = (error) => console.error(error);
 
 export const mongoConnect = tryCatch(
   mongoConnectSuccess(mongoose),
